@@ -1,0 +1,1623 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Секретный код Gravity Falls</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=IM+Fell+English+SC&family=Neucha&family=Caveat:wght@600;700&family=Marck+Script&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #141312;
+      --forest: #1e2c22;
+      --leather: #6d2430;
+      --leather-dark: #48151d;
+      --metal: #9a926e;
+      --gold: #d7b35e;
+      --paper: #d8c28e;
+      --paper-deep: #c5a96e;
+      --paper-shadow: #8a6b3b;
+      --ink: #26170f;
+      --ember: #c45235;
+      --moss: #5f7549;
+      --cream: #f5e6ba;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+      color: var(--ink);
+      font-family: "Neucha", cursive;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(248, 228, 158, 0.1), transparent 18%),
+        radial-gradient(circle at 84% 20%, rgba(248, 228, 158, 0.08), transparent 16%),
+        linear-gradient(180deg, rgba(6, 8, 7, 0.3), rgba(6, 8, 7, 0.58)),
+        linear-gradient(135deg, #27402f 0%, #1a241d 30%, #181514 100%);
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      opacity: 0.22;
+      background-image:
+        radial-gradient(circle at 16% 20%, rgba(255, 242, 193, 0.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 79% 15%, rgba(255, 242, 193, 0.45) 0 2px, transparent 3px),
+        radial-gradient(circle at 74% 78%, rgba(255, 242, 193, 0.38) 0 2px, transparent 3px),
+        linear-gradient(60deg, transparent 0 48%, rgba(215, 179, 94, 0.1) 48% 49%, transparent 49% 100%),
+        linear-gradient(-60deg, transparent 0 48%, rgba(215, 179, 94, 0.08) 48% 49%, transparent 49% 100%);
+      background-size: 220px 220px, 280px 280px, 300px 300px, 240px 240px, 240px 240px;
+    }
+
+    body::after {
+      opacity: 0.26;
+      background:
+        radial-gradient(circle at left, rgba(0, 0, 0, 0.34), transparent 22%),
+        radial-gradient(circle at right, rgba(0, 0, 0, 0.34), transparent 22%),
+        radial-gradient(circle at bottom, rgba(0, 0, 0, 0.28), transparent 24%);
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      padding: 12px;
+    }
+
+    .author-link {
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 244px;
+      padding: 10px 13px 10px 11px;
+      border-radius: 18px;
+      color: #fff7d6;
+      text-decoration: none;
+      font-family: "Neucha", cursive;
+      letter-spacing: 0.02em;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(68, 181, 232, 0.34), transparent 34%),
+        linear-gradient(135deg, rgba(109, 36, 48, 0.98), rgba(31, 44, 34, 0.98));
+      border: 2px solid rgba(245, 230, 186, 0.58);
+      box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.42),
+        0 0 0 4px rgba(68, 181, 232, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      animation: authorPulse 3.4s ease-in-out infinite;
+    }
+
+    .author-link-icon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      background:
+        linear-gradient(145deg, #53c7f5, #218dcc);
+      box-shadow:
+        0 8px 18px rgba(19, 126, 184, 0.38),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.34);
+    }
+
+    .author-link-icon svg {
+      width: 23px;
+      height: 23px;
+      transform: translate(-1px, 1px);
+    }
+
+    .author-link-copy {
+      display: grid;
+      gap: 2px;
+      line-height: 1.05;
+    }
+
+    .author-link-kicker {
+      width: fit-content;
+      padding: 2px 7px 1px;
+      border-radius: 999px;
+      color: #193447;
+      font: 700 12px/1 "Forum", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      background: #8bd8ff;
+      box-shadow: 0 0 14px rgba(139, 216, 255, 0.34);
+    }
+
+    .author-link-title {
+      font-size: 18px;
+    }
+
+    .author-link-subtitle {
+      color: rgba(255, 247, 214, 0.78);
+      font-size: 13px;
+    }
+
+    .author-link:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.46),
+        0 0 0 5px rgba(68, 181, 232, 0.18),
+        0 0 30px rgba(68, 181, 232, 0.28);
+    }
+
+    @keyframes authorPulse {
+      0%,
+      100% {
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.42),
+          0 0 0 4px rgba(68, 181, 232, 0.12),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      }
+
+      50% {
+        box-shadow:
+          0 18px 40px rgba(0, 0, 0, 0.46),
+          0 0 0 7px rgba(68, 181, 232, 0.2),
+          0 0 26px rgba(68, 181, 232, 0.22),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+      }
+    }
+
+    .journal {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 18px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(134, 39, 56, 0.96), rgba(87, 24, 35, 0.98));
+      border: 4px solid rgba(46, 17, 22, 0.95);
+      box-shadow:
+        inset 0 0 0 2px rgba(238, 194, 122, 0.14),
+        inset 0 0 40px rgba(0, 0, 0, 0.22),
+        0 22px 60px rgba(0, 0, 0, 0.38);
+      overflow: hidden;
+    }
+
+    .journal::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(232, 201, 145, 0.18);
+      pointer-events: none;
+    }
+
+    .journal::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 16px;
+      transform: translateX(-50%);
+      background:
+        linear-gradient(90deg, rgba(63, 18, 25, 0.96), rgba(126, 55, 34, 0.86), rgba(63, 18, 25, 0.96));
+      box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 226, 169, 0.08);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .spread {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.92fr);
+      gap: 18px;
+      height: 100%;
+    }
+
+    .page-sheet {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      padding: 16px 16px 14px;
+      border-radius: 22px;
+      background:
+        url("assets/image-01.jpg") center/cover no-repeat,
+        radial-gradient(circle at 18% 12%, rgba(255, 246, 219, 0.62), transparent 18%),
+        radial-gradient(circle at 85% 82%, rgba(178, 126, 54, 0.12), transparent 18%),
+        linear-gradient(180deg, rgba(232, 210, 158, 0.96), rgba(205, 171, 104, 0.97));
+      border: 2px solid rgba(101, 68, 30, 0.42);
+      box-shadow: inset 0 0 0 1px rgba(255, 248, 225, 0.26);
+      overflow: hidden;
+    }
+
+    .page-sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(87, 54, 27, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87, 54, 27, 0.12) 1px, transparent 1px);
+      background-size: 100% 26px, 26px 100%;
+      pointer-events: none;
+    }
+
+    .page-sheet::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 16px;
+      border: 1px solid rgba(109, 82, 42, 0.16);
+      pointer-events: none;
+    }
+
+    .left-page {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 8px;
+    }
+
+    .right-page {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto auto auto auto auto;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .header {
+      display: grid;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .journal-mark {
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(109, 36, 48, 0.14);
+      border: 1px solid rgba(109, 36, 48, 0.22);
+      color: #6b2630;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 0;
+      font-family: "Forum", serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+      line-height: 0.98;
+      color: #402017;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-shadow: 0 1px 0 rgba(255, 248, 229, 0.38);
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #563826;
+      font-size: clamp(1.08rem, 1.3vw, 1.32rem);
+      line-height: 1.18;
+      max-width: 95%;
+    }
+
+    .scribble {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      font-family: "Marck Script", cursive;
+      font-size: 1.1rem;
+      color: rgba(117, 39, 33, 0.72);
+      transform: rotate(-4deg);
+    }
+
+    .attempts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .attempt-card {
+      position: relative;
+      padding: 7px 7px 8px;
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, rgba(98, 48, 30, 0.12), rgba(255, 243, 215, 0.26));
+      border: 1px solid rgba(108, 77, 40, 0.24);
+      text-align: center;
+      transform: rotate(var(--tilt, 0deg));
+    }
+
+    .attempt-card:nth-child(odd) {
+      --tilt: -1.2deg;
+    }
+
+    .attempt-card:nth-child(even) {
+      --tilt: 1.2deg;
+    }
+
+    .attempt-card::before,
+    .attempt-card::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(126, 79, 32, 0.22);
+      box-shadow: inset 0 1px 0 rgba(255, 248, 221, 0.24);
+      top: 6px;
+    }
+
+    .attempt-card::before {
+      left: 6px;
+    }
+
+    .attempt-card::after {
+      right: 6px;
+    }
+
+    .lock {
+      position: relative;
+      width: min(100%, 116px);
+      margin: 0 auto 6px;
+      aspect-ratio: 1 / 0.94;
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+    }
+
+    .lock-handle {
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      width: 55%;
+      height: 40%;
+      transform: translateX(-50%);
+      border: 8px solid #70767b;
+      border-bottom: 0;
+      border-radius: 999px 999px 0 0;
+    }
+
+    .lock-body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 66%;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 243, 192, 0.48), transparent 18%),
+        linear-gradient(180deg, #deb764 0%, #9a5f2a 100%);
+      border: 3px solid rgba(58, 33, 17, 0.84);
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      padding: 10px 8px 8px;
+      overflow: hidden;
+    }
+
+    .lock-body::before {
+      content: "△";
+      position: absolute;
+      top: 6px;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      color: rgba(58, 33, 17, 0.72);
+    }
+
+    .lock-body::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      width: 12px;
+      height: 16px;
+      transform: translateX(-50%);
+      border-radius: 12px 12px 8px 8px;
+      background: rgba(50, 27, 18, 0.62);
+      opacity: 0.48;
+    }
+
+    .digits {
+      --cols: 4;
+      display: inline-grid;
+      grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+      gap: 5px;
+      width: min(100%, calc(var(--cols) * 28px + (var(--cols) - 1) * 5px));
+      margin-inline: auto;
+      justify-content: center;
+    }
+
+    .digit {
+      aspect-ratio: 1 / 1.14;
+      border-radius: 8px;
+      border: 2px solid rgba(44, 28, 17, 0.82);
+      background: rgba(28, 19, 14, 0.92);
+      color: #fff3d4;
+      display: grid;
+      place-items: center;
+      font-family: "IM Fell English SC", serif;
+      font-size: clamp(0.9rem, 1vw, 1rem);
+      font-weight: 700;
+    }
+
+    .attempt-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(70, 41, 22, 0.1);
+      color: #5d3521;
+      font-size: 0.96rem;
+    }
+
+    .rules-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: "Caveat", cursive;
+      font-size: clamp(1.7rem, 2.3vw, 2.35rem);
+      color: #742d22;
+    }
+
+    .rules-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 12px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .rule {
+      min-height: 76px;
+      padding: 10px 12px 8px;
+      border-radius: 12px;
+      background: rgba(252, 244, 218, 0.42);
+      border-left: 3px solid rgba(116, 45, 34, 0.44);
+      color: #352117;
+      font-size: clamp(1.34rem, 1.68vw, 1.86rem);
+      line-height: 1.06;
+      box-shadow: inset 0 0 0 1px rgba(110, 79, 41, 0.08);
+    }
+
+    .rule strong {
+      color: #7d2d23;
+    }
+
+    .page-badge {
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(109, 36, 48, 0.18);
+      border: 1px solid rgba(109, 36, 48, 0.22);
+      color: #6b2630;
+      font-size: 1.02rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .progress {
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(196, 82, 53, 0.18);
+      border: 1px solid rgba(196, 82, 53, 0.26);
+      color: #7e2f22;
+      font-size: 1.04rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .input-title {
+      margin: 0;
+      font-family: "Forum", serif;
+      font-size: clamp(1.34rem, 1.65vw, 1.7rem);
+      color: #4b2519;
+      text-transform: uppercase;
+    }
+
+    .game-tip {
+      margin: 0;
+      color: #624332;
+      font-size: 1.34rem;
+      line-height: 1.1;
+    }
+
+    .screen {
+      display: grid;
+      gap: 8px;
+      padding: 9px;
+      border-radius: 16px;
+      background: rgba(255, 246, 224, 0.3);
+      border: 1px solid rgba(114, 75, 37, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .code-slots {
+      --cols: 4;
+      display: grid;
+      grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+      gap: 10px;
+      width: min(100%, calc(var(--cols) * 82px + (var(--cols) - 1) * 10px));
+      margin-inline: auto;
+    }
+
+    .slot {
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      border: 2px dashed rgba(111, 80, 39, 0.34);
+      background: rgba(255, 250, 235, 0.28);
+      display: grid;
+      place-items: center;
+      color: #652b1f;
+      font-family: "IM Fell English SC", serif;
+      font-size: clamp(1.35rem, 1.9vw, 1.8rem);
+    }
+
+    .slot.filled {
+      border-style: solid;
+      background: rgba(196, 82, 53, 0.12);
+    }
+
+    .status {
+      min-height: 34px;
+      padding: 7px 9px;
+      border-radius: 12px;
+      background: rgba(109, 36, 48, 0.12);
+      color: #5f3624;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.14;
+      font-size: 1.28rem;
+    }
+
+    .status.error {
+      background: rgba(196, 82, 53, 0.18);
+      color: #7a2b20;
+    }
+
+    .status.success {
+      background: rgba(95, 117, 73, 0.18);
+      color: #44542e;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .key {
+      min-height: 52px;
+      border: 1px solid rgba(99, 64, 30, 0.3);
+      border-radius: 12px;
+      background:
+        linear-gradient(180deg, rgba(255, 243, 213, 0.86), rgba(201, 170, 107, 0.92));
+      color: #422317;
+      font-family: "IM Fell English SC", serif;
+      font-size: 1.42rem;
+      cursor: pointer;
+      transition: transform 0.14s ease, filter 0.14s ease;
+    }
+
+    .key:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .key.secondary {
+      font-family: "Neucha", cursive;
+      font-size: 1.2rem;
+    }
+
+    .key.wide {
+      grid-column: span 2;
+    }
+
+    .story-card {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 10px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(253, 244, 217, 0.28);
+      border: 1px solid rgba(111, 80, 39, 0.2);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .story-card::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 18px;
+      width: 46px;
+      height: 14px;
+      background: rgba(196, 82, 53, 0.16);
+      transform: rotate(-7deg);
+      border-radius: 3px;
+    }
+
+    .story-thumb {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(95, 57, 29, 0.28);
+      background: rgba(255, 255, 255, 0.22);
+      transform: rotate(-2deg);
+    }
+
+    .story-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 5px;
+      align-content: center;
+      min-width: 0;
+    }
+
+    .story-title {
+      font-family: "Caveat", cursive;
+      font-size: 1.72rem;
+      color: #7d2d23;
+      line-height: 1;
+    }
+
+    .story-text {
+      font-size: 1.26rem;
+      line-height: 1.1;
+      color: #573728;
+    }
+
+    .page-illustration {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.18;
+      mix-blend-mode: multiply;
+      filter: sepia(0.42) saturate(0.8) contrast(0.94);
+    }
+
+    .page-illustration img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .page-illustration {
+      display: none !important;
+    }
+
+
+    .page-illustration.left {
+      right: 10px;
+      bottom: 12px;
+      width: min(44%, 360px);
+    }
+
+    .page-illustration.right {
+      right: 12px;
+      top: 118px;
+      width: min(38%, 240px);
+      opacity: 0.14;
+    }
+
+    .margin-note {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      font-family: "Caveat", cursive;
+      font-size: 1.08rem;
+      color: rgba(116, 45, 34, 0.7);
+      transform: rotate(-3deg);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(7, 7, 7, 0.58);
+      z-index: 20;
+    }
+
+    .modal.show {
+      display: grid;
+    }
+
+    .modal-card {
+      width: min(100%, 580px);
+      padding: 24px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(232, 210, 158, 0.98), rgba(196, 164, 98, 0.99));
+      border: 3px solid #5a311d;
+      color: #2b1910;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+    }
+
+    .modal-tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #6d2430;
+      color: #ffecc5;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      margin: 12px 0 8px;
+      font-family: "Cinzel Decorative", serif;
+      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+      line-height: 1.06;
+      text-transform: uppercase;
+    }
+
+    .modal-text {
+      margin: 0 0 16px;
+      font-size: 0.96rem;
+      line-height: 1.45;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-family: "Neucha", cursive;
+      font-size: 0.9rem;
+    }
+
+    .action.primary {
+      background: #7c3023;
+      color: #ffebc8;
+    }
+
+    .action.secondary {
+      background: rgba(94, 59, 33, 0.14);
+      color: #4b2b19;
+    }
+
+
+
+    .modal.final-mode .modal-card {
+      width: min(100%, 720px);
+      padding: 34px 34px 30px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 244, 191, 0.34), transparent 28%),
+        linear-gradient(180deg, rgba(229, 205, 148, 0.99), rgba(185, 145, 76, 0.99));
+      border: 4px double #552b1b;
+      box-shadow: 0 28px 90px rgba(0,0,0,.58), inset 0 0 48px rgba(89,45,19,.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal.final-mode .modal-card::before,
+    .modal.final-mode .modal-card::after {
+      content: "△  ◉  ?  ✦";
+      position: absolute;
+      left: 0;
+      right: 0;
+      color: rgba(101, 43, 30, .16);
+      font-family: "IM Fell English SC", serif;
+      font-size: 2rem;
+      letter-spacing: .65em;
+      pointer-events: none;
+    }
+
+    .modal.final-mode .modal-card::before { top: 10px; }
+    .modal.final-mode .modal-card::after { bottom: 10px; transform: rotate(180deg); }
+
+    .modal.final-mode .modal-tag {
+      background: #6d2430;
+      color: #ffe9b4;
+      border: 2px solid rgba(255,231,169,.4);
+      font-size: .9rem;
+      padding: 8px 16px;
+      transform: rotate(-2deg);
+      box-shadow: 0 5px 14px rgba(72,21,29,.2);
+    }
+
+    .modal.final-mode .modal-title {
+      font-family: "Forum", serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #4b2018;
+      margin: 22px 0 14px;
+      letter-spacing: .04em;
+    }
+
+    .modal.final-mode .modal-text {
+      font-family: "Neucha", cursive;
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      line-height: 1.35;
+      max-width: 610px;
+      margin: 0 auto 24px;
+      white-space: pre-line;
+      color: #3f281d;
+    }
+
+    .modal.final-mode .modal-actions { justify-content: center; }
+
+    canvas#sparks {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 19;
+    }
+
+    .shake {
+      animation: shake 0.36s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    @media (max-width: 1180px) {
+      html,
+      body {
+        height: auto;
+      }
+
+      body {
+        overflow: auto;
+      }
+
+      .page {
+        height: auto;
+      }
+
+      .journal {
+        height: auto;
+      }
+
+      .spread {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .left-page,
+      .right-page {
+        height: auto;
+      }
+
+      .story-card {
+        grid-template-columns: 1fr;
+      }
+
+      .rules-list {
+        grid-template-columns: 1fr;
+      }
+
+      .page-illustration.left,
+      .page-illustration.right {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 8px;
+      }
+
+      .journal {
+        padding: 10px;
+        border-radius: 18px;
+      }
+
+      .journal::after {
+        display: none;
+      }
+
+      .page-sheet {
+        padding: 12px;
+      }
+
+      .author-link {
+        right: 10px;
+        top: 10px;
+        max-width: 218px;
+        padding: 8px 10px 8px 9px;
+        border-radius: 16px;
+      }
+
+      .author-link-icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      .author-link-icon svg {
+        width: 19px;
+        height: 19px;
+      }
+
+      .author-link-kicker {
+        font-size: 10px;
+      }
+
+      .author-link-title {
+        font-size: 15px;
+      }
+
+      .author-link-subtitle {
+        display: none;
+      }
+    }
+  
+
+
+  </style>
+</head>
+<body>
+  <canvas id="sparks"></canvas>
+  <audio id="finalMusic" preload="auto" src="assets/audio-02.mp3"></audio>
+  <a class="author-link" href="https://t.me/pedagogy_as_it_is" target="_blank" rel="noopener noreferrer" aria-label="Перейти в Telegram-канал автора игры">
+    <span class="author-link-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path fill="currentColor" d="M21.7 3.4 18.4 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.3L5.8 13.4.9 11.9c-1.1-.3-1.1-1.1.2-1.6L20.3 2.9c.9-.3 1.7.2 1.4.5Z"/>
+      </svg>
+    </span>
+    <span class="author-link-copy">
+      <span class="author-link-kicker">Telegram</span>
+      <span class="author-link-title">Канал автора игры</span>
+      <span class="author-link-subtitle">новые мысли, идеи и задачи</span>
+    </span>
+  </a>
+
+
+
+  <main class="page">
+    <div class="journal">
+      <div class="spread">
+        <section class="page-sheet left-page">
+          <div class="page-illustration left">
+            <img id="leftIllustration" src="assets/image-03.jpg" alt="">
+          </div>
+          <div class="header">
+            <div class="journal-mark">Секретный код Gravity Falls</div>
+            <h1 id="title" class="title"></h1>
+            <p id="subtitle" class="subtitle"></p>
+            <div class="scribble">проверь все попытки</div>
+          </div>
+
+          <div id="puzzleVisual"></div>
+
+          <h2 id="rulesTitle" class="rules-title"></h2>
+          <div id="rulesList" class="rules-list"></div>
+        </section>
+
+        <aside class="page-sheet right-page">
+          <div class="page-illustration right">
+            <img id="rightIllustration" src="assets/image-04.jpg" alt="">
+          </div>
+          <div id="badgeValue" class="page-badge"></div>
+          <div id="progress" class="progress"></div>
+          <div class="story-card">
+            <div class="story-thumb">
+              <img id="storyImage" src="assets/image-05.jpg" alt="Сцена расследования">
+            </div>
+            <div class="story-copy">
+              <div id="storyTitle" class="story-title"></div>
+              <div id="storyText" class="story-text"></div>
+            </div>
+          </div>
+          <div>
+            <h2 class="input-title">Введи код</h2>
+            <p id="gameTip" class="game-tip"></p>
+          </div>
+
+          <div id="screen" class="screen">
+            <div id="codeSlots" class="code-slots" aria-label="Введенный код"></div>
+            <div id="status" class="status"></div>
+          </div>
+
+          <div class="keypad" aria-label="Кнопки цифр">
+            <button class="key" data-digit="1">1</button>
+            <button class="key" data-digit="2">2</button>
+            <button class="key" data-digit="3">3</button>
+            <button class="key" data-digit="4">4</button>
+            <button class="key" data-digit="5">5</button>
+            <button class="key" data-digit="6">6</button>
+            <button class="key" data-digit="7">7</button>
+            <button class="key" data-digit="8">8</button>
+            <button class="key" data-digit="9">9</button>
+            <button id="clearBtn" class="key secondary wide" type="button">Сбросить</button>
+            <button class="key" data-digit="0">0</button>
+            <button id="backBtn" class="key secondary" type="button">Стереть</button>
+          </div>
+
+          <div class="margin-note">ответ где-то рядом…</div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div id="modalTag" class="modal-tag"></div>
+      <h2 id="modalTitle" class="modal-title"></h2>
+      <p id="modalText" class="modal-text"></p>
+      <div class="modal-actions">
+        <button id="primaryActionBtn" class="action primary" type="button"></button>
+        <button id="secondaryActionBtn" class="action secondary" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const puzzles = [
+      {
+        title: "Сможешь взломать код?",
+        subtitle: "У этого замка код из трех цифр. Разгадай его, используя только эти записи.",
+        badge: "Первая тайна",
+        progress: "Загадка 1 из 5",
+        tip: "В этой загадке код состоит из трех цифр.",
+        storyTitle: "След у ручья",
+        storyText: "Мэйбл заметила замок у лесного ручья, а Диппер сразу переписал все попытки в дневник.",
+        storyImage: "assets/image-06.jpg",
+        pageArtLeft: "assets/image-07.jpg",
+        pageArtRight: "assets/image-04.jpg",
+        rulesTitle: "Известно, что:",
+        attempts: [
+          { label: "1 попытка", digits: "291" },
+          { label: "2 попытка", digits: "245" },
+          { label: "3 попытка", digits: "463" },
+          { label: "4 попытка", digits: "578" },
+          { label: "5 попытка", digits: "569" }
+        ],
+        rules: [
+          "<strong>1 попытка:</strong> Одна цифра правильная и стоит на своем месте.",
+          "<strong>2 попытка:</strong> Одна цифра правильная, но стоит не на своем месте.",
+          "<strong>3 попытка:</strong> Две цифры правильные, но обе стоят не на своих местах.",
+          "<strong>4 попытка:</strong> Ни одна цифра не подходит.",
+          "<strong>5 попытка:</strong> Одна цифра правильная, но стоит не на своем месте."
+        ],
+        solution: "394",
+        introStatus: "Начни с первой записи из дневника."
+      },
+      {
+        title: "Сможешь взломать код?",
+        subtitle: "Еще один замок на три цифры. Снова нужно внимательно сравнить все попытки.",
+        badge: "Вторая тайна",
+        progress: "Загадка 2 из 5",
+        tip: "Здесь тоже три цифры. Следи за позициями.",
+        storyTitle: "Лесная поляна",
+        storyText: "На старом пне нашлась новая записка. Диппер уверен, что порядок цифр спрятан между попытками.",
+        storyImage: "assets/image-05.jpg",
+        pageArtLeft: "assets/image-03.jpg",
+        pageArtRight: "assets/image-07.jpg",
+        rulesTitle: "Известно, что:",
+        attempts: [
+          { label: "1 попытка", digits: "682" },
+          { label: "2 попытка", digits: "614" },
+          { label: "3 попытка", digits: "206" },
+          { label: "4 попытка", digits: "738" },
+          { label: "5 попытка", digits: "780" }
+        ],
+        rules: [
+          "<strong>1 попытка:</strong> Одна цифра правильная и стоит на своем месте.",
+          "<strong>2 попытка:</strong> Одна цифра правильная, но стоит не на своем месте.",
+          "<strong>3 попытка:</strong> Две цифры правильные, но обе стоят не на своих местах.",
+          "<strong>4 попытка:</strong> Ни одна цифра не подходит.",
+          "<strong>5 попытка:</strong> Одна цифра правильная, но стоит не на своем месте."
+        ],
+        solution: "042",
+        introStatus: "Вторая запись открыта."
+      },
+      {
+        title: "Взломщик кодов",
+        subtitle: "Теперь код уже из четырех цифр. Сопоставь все попытки и найди точную последовательность.",
+        badge: "Третья тайна",
+        progress: "Загадка 3 из 5",
+        tip: "Здесь код состоит из четырех цифр.",
+        storyTitle: "Запертый тайник",
+        storyText: "Мэйбл нашла в корнях дерева металлический ящик. Чтобы открыть его, нужен длинный код.",
+        storyImage: "assets/image-04.jpg",
+        pageArtLeft: "assets/image-04.jpg",
+        pageArtRight: "assets/image-03.jpg",
+        rulesTitle: "Известно, что:",
+        attempts: [
+          { label: "1 попытка", digits: "8726" },
+          { label: "2 попытка", digits: "9106" },
+          { label: "3 попытка", digits: "1735" },
+          { label: "4 попытка", digits: "3580" },
+          { label: "5 попытка", digits: "4978" }
+        ],
+        rules: [
+          "<strong>1 попытка:</strong> Одна цифра правильная и стоит на своем месте.",
+          "<strong>2 попытка:</strong> Две цифры правильные, но обе стоят не на своих местах.",
+          "<strong>3 попытка:</strong> Одна цифра правильная и стоит на своем месте.",
+          "<strong>4 попытка:</strong> Ни одна цифра не подходит.",
+          "<strong>5 попытка:</strong> Две цифры правильные, но обе стоят не на своих местах."
+        ],
+        solution: "1429",
+        introStatus: "Третья запись открыта."
+      },
+      {
+        title: "Раскрой пароль",
+        subtitle: "У этого замка ключ из трех цифр. Здесь важно и какие цифры подходят, и где именно они стоят.",
+        badge: "Четвертая тайна",
+        progress: "Загадка 4 из 5",
+        tip: "Снова три цифры. Смотри на каждую попытку отдельно.",
+        storyTitle: "Поля на полях",
+        storyText: "На этой странице кто-то оставил короткие пометки. Похоже, они ведут к следующему замку.",
+        storyImage: "assets/image-03.jpg",
+        pageArtLeft: "assets/image-07.jpg",
+        pageArtRight: "assets/image-04.jpg",
+        rulesTitle: "Известно, что:",
+        attempts: [
+          { label: "1 попытка", digits: "342" },
+          { label: "2 попытка", digits: "273" },
+          { label: "3 попытка", digits: "165" },
+          { label: "4 попытка", digits: "853" },
+          { label: "5 попытка", digits: "865" }
+        ],
+        rules: [
+          "<strong>1 попытка:</strong> Ни одна цифра не подходит.",
+          "<strong>2 попытка:</strong> Ни одна цифра не подходит.",
+          "<strong>3 попытка:</strong> Две цифры правильные, но только одна из них стоит на своем месте.",
+          "<strong>4 попытка:</strong> Две цифры правильные, но только одна из них стоит на своем месте.",
+          "<strong>5 попытка:</strong> Две цифры правильные, но обе стоят не на своих местах."
+        ],
+        solution: "158",
+        introStatus: "Четвертая запись открыта."
+      },
+      {
+        title: "Открой замок",
+        subtitle: "Последний шифр самый длинный. Каждая попытка подсказывает часть правильного кода из пяти цифр.",
+        badge: "Пятая тайна",
+        progress: "Загадка 5 из 5",
+        tip: "Финальный код состоит из пяти цифр.",
+        storyTitle: "Главный шифр",
+        storyText: "Диппер считает, что за этим кодом скрыта настоящая тайна дневника, и Мэйбл уже готова открыть замок.",
+        storyImage: "assets/image-07.jpg",
+        pageArtLeft: "assets/image-03.jpg",
+        pageArtRight: "assets/image-06.jpg",
+        rulesTitle: "Известно, что:",
+        attempts: [
+          { label: "1 попытка", digits: "82619" },
+          { label: "2 попытка", digits: "47530" },
+          { label: "3 попытка", digits: "86302" },
+          { label: "4 попытка", digits: "91704" },
+          { label: "5 попытка", digits: "70629" }
+        ],
+        rules: [
+          "<strong>1 попытка:</strong> Две цифры правильные, но обе стоят не на своих местах.",
+          "<strong>2 попытка:</strong> Три цифры правильные, но все стоят не на своих местах.",
+          "<strong>3 попытка:</strong> Две цифры правильные, и одна из них стоит на своем месте.",
+          "<strong>4 попытка:</strong> Две цифры правильные и обе стоят на своих местах.",
+          "<strong>5 попытка:</strong> Одна цифра правильная и стоит на своем месте."
+        ],
+        solution: "51324",
+        introStatus: "Последняя запись открыта."
+      }
+    ];
+
+    let currentPuzzleIndex = 0;
+    const entry = [];
+
+    const titleEl = document.getElementById("title");
+    const subtitleEl = document.getElementById("subtitle");
+    const badgeValueEl = document.getElementById("badgeValue");
+    const progressEl = document.getElementById("progress");
+    const gameTipEl = document.getElementById("gameTip");
+    const storyTitleEl = document.getElementById("storyTitle");
+    const storyTextEl = document.getElementById("storyText");
+    const storyImageEl = document.getElementById("storyImage");
+    const leftIllustrationEl = document.getElementById("leftIllustration");
+    const rightIllustrationEl = document.getElementById("rightIllustration");
+    const puzzleVisualEl = document.getElementById("puzzleVisual");
+    const rulesTitleEl = document.getElementById("rulesTitle");
+    const rulesListEl = document.getElementById("rulesList");
+    const codeSlotsEl = document.getElementById("codeSlots");
+    const statusEl = document.getElementById("status");
+    const screen = document.getElementById("screen");
+    const modalEl = document.getElementById("modal");
+    const modalTagEl = document.getElementById("modalTag");
+    const modalTitleEl = document.getElementById("modalTitle");
+    const modalTextEl = document.getElementById("modalText");
+    const primaryActionBtn = document.getElementById("primaryActionBtn");
+    const secondaryActionBtn = document.getElementById("secondaryActionBtn");
+    let slots = [];
+
+    function currentPuzzle() {
+      return puzzles[currentPuzzleIndex];
+    }
+
+    function renderSlots(length) {
+      codeSlotsEl.style.setProperty("--cols", length);
+      codeSlotsEl.innerHTML = Array.from({ length }, () => '<div class="slot"></div>').join("");
+      slots = Array.from(codeSlotsEl.querySelectorAll(".slot"));
+    }
+
+    function renderEntry() {
+      slots.forEach((slot, index) => {
+        const value = entry[index] || "";
+        slot.textContent = value;
+        slot.classList.toggle("filled", Boolean(value));
+      });
+    }
+
+    function setStatus(message, type = "") {
+      statusEl.textContent = message;
+      statusEl.className = "status";
+      if (type) {
+        statusEl.classList.add(type);
+      }
+    }
+
+    function clearEntry(updateStatus = true) {
+      entry.length = 0;
+      renderEntry();
+      if (updateStatus) {
+        setStatus(currentPuzzle().introStatus);
+      }
+    }
+
+    function renderAttemptsLayout(attempts) {
+      return `
+        <div class="attempts-grid">
+          ${attempts.map((attempt) => `
+            <article class="attempt-card">
+              <div class="lock" aria-hidden="true">
+                <div class="lock-handle"></div>
+                <div class="lock-body">
+                  <div class="digits" style="--cols: ${attempt.digits.length}">
+                    ${attempt.digits.split("").map((digit) => `<div class="digit">${digit}</div>`).join("")}
+                  </div>
+                </div>
+              </div>
+              <div class="attempt-label">${attempt.label}</div>
+            </article>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderRules(rules) {
+      rulesListEl.innerHTML = rules.map((rule) => `<div class="rule">${rule}</div>`).join("");
+    }
+
+    function renderPuzzle() {
+      const puzzle = currentPuzzle();
+      titleEl.textContent = puzzle.title;
+      subtitleEl.textContent = puzzle.subtitle;
+      badgeValueEl.textContent = puzzle.badge;
+      progressEl.textContent = puzzle.progress;
+      gameTipEl.textContent = puzzle.tip;
+      storyTitleEl.textContent = puzzle.storyTitle;
+      storyTextEl.textContent = puzzle.storyText;
+      storyImageEl.src = puzzle.storyImage;
+      leftIllustrationEl.src = puzzle.pageArtLeft;
+      rightIllustrationEl.src = puzzle.pageArtRight;
+      rulesTitleEl.textContent = puzzle.rulesTitle;
+      renderSlots(puzzle.solution.length);
+      puzzleVisualEl.innerHTML = renderAttemptsLayout(puzzle.attempts);
+      renderRules(puzzle.rules);
+      clearEntry();
+    }
+
+
+
+    function preloadUpcomingAssets() {
+      const urls = new Set();
+      puzzles.slice(currentPuzzleIndex + 1).forEach((puzzle) => {
+        [puzzle.storyImage, puzzle.pageArtLeft, puzzle.pageArtRight].forEach((url) => {
+          if (url) urls.add(url);
+        });
+      });
+      const queue = Array.from(urls);
+      const loadNext = () => {
+        const url = queue.shift();
+        if (!url) return;
+        const img = new Image();
+        img.onload = img.onerror = () => setTimeout(loadNext, 120);
+        img.src = url;
+      };
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadNext, { timeout: 1800 });
+      } else {
+        setTimeout(loadNext, 900);
+      }
+    }
+
+    function backspace() {
+      if (!entry.length || modalEl.classList.contains("show")) {
+        return;
+      }
+      entry.pop();
+      renderEntry();
+      setStatus("Последняя цифра стерта.");
+    }
+
+    function openModal(config) {
+      modalEl.classList.toggle("final-mode", Boolean(config.finalMode));
+      modalTagEl.textContent = config.tag;
+      modalTitleEl.textContent = config.title;
+      modalTextEl.textContent = config.text;
+      primaryActionBtn.textContent = config.primaryLabel;
+      secondaryActionBtn.textContent = config.secondaryLabel;
+      primaryActionBtn.onclick = config.onPrimary;
+      secondaryActionBtn.onclick = config.onSecondary;
+      modalEl.classList.add("show");
+    }
+
+    function resetAll() {
+      const finalMusic = document.getElementById("finalMusic");
+      finalMusic.pause();
+      finalMusic.currentTime = 0;
+      modalEl.classList.remove("show", "final-mode");
+      currentPuzzleIndex = 0;
+      renderPuzzle();
+      preloadUpcomingAssets();
+      setStatus("Начни с первой записи из дневника.");
+    }
+
+    function goToNextPuzzle() {
+      modalEl.classList.remove("show");
+      currentPuzzleIndex += 1;
+      renderPuzzle();
+      preloadUpcomingAssets();
+      setStatus(currentPuzzle().introStatus);
+    }
+
+    function finalWin() {
+      const finalMusic = document.getElementById("finalMusic");
+      finalMusic.currentTime = 0;
+      finalMusic.volume = 0.72;
+      finalMusic.play().catch(() => {});
+      openModal({
+        finalMode: true,
+        tag: "РАССЕКРЕЧЕНО",
+        title: "Все коды раскрыты",
+        text: "Молодцы! Вы разгадали все пять шифров и открыли последнюю тайну Дневника № 3.\n\nНо будьте осторожны: в Гравити Фолз раскрытая тайна редко оказывается последней. Если однажды ночью в лесу вы услышите странный шорох — возможно, дневник выбрал для следующего расследования именно вас.\n\nЗапись завершена. Дело пока закрыто…",
+        primaryLabel: "Пройти заново",
+        secondaryLabel: "Остаться здесь",
+        onPrimary: () => {
+          modalEl.classList.remove("show");
+          resetAll();
+          startSparkBurst();
+        },
+        onSecondary: () => {
+          const finalMusic = document.getElementById("finalMusic");
+          finalMusic.pause();
+          finalMusic.currentTime = 0;
+          modalEl.classList.remove("show", "final-mode");
+          clearEntry(false);
+          setStatus("Последняя загадка решена.", "success");
+        }
+      });
+      setStatus("Верно! Последняя загадка решена.", "success");
+      startSparkBurst();
+    }
+
+    function intermediateWin() {
+      openModal({
+        tag: `Шаг ${currentPuzzleIndex + 1}`,
+        title: `Загадка ${currentPuzzleIndex + 1} решена`,
+        text: "Замок открыт. Можно переходить к следующей записи.",
+        primaryLabel: "Перейти к следующей задаче",
+        secondaryLabel: "Начать сначала",
+        onPrimary: goToNextPuzzle,
+        onSecondary: () => {
+          modalEl.classList.remove("show");
+          resetAll();
+        }
+      });
+      setStatus(`Верно! Загадка ${currentPuzzleIndex + 1} решена.`, "success");
+      startSparkBurst();
+    }
+
+    function checkEntry() {
+      const guess = entry.join("");
+      if (guess === currentPuzzle().solution) {
+        if (currentPuzzleIndex < puzzles.length - 1) {
+          intermediateWin();
+        } else {
+          finalWin();
+        }
+        return;
+      }
+
+      setStatus("Пока не совпало. Замок не открылся.", "error");
+      screen.classList.remove("shake");
+      void screen.offsetWidth;
+      screen.classList.add("shake");
+      window.setTimeout(() => clearEntry(false), 820);
+    }
+
+    function addDigit(digit) {
+      if (modalEl.classList.contains("show") || entry.length === currentPuzzle().solution.length) {
+        return;
+      }
+      entry.push(digit);
+      renderEntry();
+      if (entry.length < currentPuzzle().solution.length) {
+        setStatus("Продолжай вводить код.");
+      } else {
+        checkEntry();
+      }
+    }
+
+    document.querySelectorAll("[data-digit]").forEach((button) => {
+      button.addEventListener("click", () => addDigit(button.dataset.digit));
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", () => clearEntry());
+    document.getElementById("backBtn").addEventListener("click", backspace);
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key >= "0" && event.key <= "9") {
+        addDigit(event.key);
+      }
+      if (event.key === "Backspace") {
+        backspace();
+      }
+      if (event.key === "Escape") {
+        modalEl.classList.remove("show");
+      }
+    });
+
+    const canvas = document.getElementById("sparks");
+    const ctx = canvas.getContext("2d");
+    let sparks = [];
+    let animationFrame = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth * window.devicePixelRatio;
+      canvas.height = window.innerHeight * window.devicePixelRatio;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+    }
+
+    function randomBetween(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function startSparkBurst() {
+      resizeCanvas();
+      sparks = Array.from({ length: 150 }, () => ({
+        x: randomBetween(window.innerWidth * 0.24, window.innerWidth * 0.76),
+        y: randomBetween(window.innerHeight * 0.2, window.innerHeight * 0.62),
+        size: randomBetween(2, 6),
+        color: ["#d7b35e", "#f5e6ba", "#c45235", "#fff3d4"][Math.floor(Math.random() * 4)],
+        vx: randomBetween(-2.5, 2.5),
+        vy: randomBetween(-3.2, 0.8),
+        life: randomBetween(34, 72)
+      }));
+
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        sparks.forEach((spark) => {
+          spark.x += spark.vx;
+          spark.y += spark.vy;
+          spark.vy += 0.045;
+          spark.life -= 1;
+          ctx.globalAlpha = Math.max(spark.life / 72, 0);
+          ctx.fillStyle = spark.color;
+          ctx.beginPath();
+          ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+        sparks = sparks.filter((spark) => spark.life > 0);
+        if (sparks.length) {
+          animationFrame = requestAnimationFrame(draw);
+        } else {
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+          animationFrame = null;
+        }
+      }
+
+      animationFrame = requestAnimationFrame(draw);
+    }
+
+
+
+
+    window.addEventListener("resize", resizeCanvas);
+
+
+    // Короткий звук пера по бумаге для всех кнопок.
+    let penAudioContext = null;
+
+    function playPenScratch() {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!penAudioContext) penAudioContext = new AudioCtx();
+      const ctx = penAudioContext;
+      if (ctx.state === "suspended") ctx.resume();
+
+      const now = ctx.currentTime;
+      const duration = 0.11;
+      const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * duration), ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      let last = 0;
+      for (let i = 0; i < data.length; i += 1) {
+        const noise = Math.random() * 2 - 1;
+        last = last * 0.72 + noise * 0.28;
+        const envelope = Math.sin(Math.PI * (i / data.length));
+        data[i] = last * envelope;
+      }
+
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      const filter = ctx.createBiquadFilter();
+      filter.type = "bandpass";
+      filter.frequency.setValueAtTime(1450, now);
+      filter.Q.setValueAtTime(0.75, now);
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+      source.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+      source.start(now);
+      source.stop(now + duration);
+    }
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("button")) playPenScratch();
+    }, true);
+
+    resizeCanvas();
+    renderPuzzle();
+    preloadUpcomingAssets();
+  </script>
+</body>
+</html>
